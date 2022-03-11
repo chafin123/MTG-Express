@@ -36,11 +36,37 @@ h1 {
     border-radius: 0 3px 3px 0;
     user-select: none;
   }
-  .next {
+.next {
     right: 0;
     border-radius: 3px 0 0 3px;
-  }
-  
-  .prev:hover, .next:hover {
+}
+
+.prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
-  }
+}
+.cardDrop {
+    animation: cardDrop 5s 
+    /* timing-function delay iteration-count direction fill-mode;  */
+}
+@keyframes cardDrop {
+    from {
+        display: block;
+        transform: scale(6rem);
+        opacity: 0%;
+    }
+    25% {
+        transform: scale(4rem);
+    }
+    50% {
+        transform: scale(2rem);
+        opacity: 50%;
+    }
+    75% {
+        transform: scale(1.5rem);
+    }
+    to {
+        transform: scale(1rem);
+        opacity: 100%;  
+    }
+    
+}
