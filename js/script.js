@@ -54,14 +54,12 @@ function showCards(cardList) {
                 <div class="myCarouselImage">
                 <img src="./assests/images/${key[2]}.png" class="indexCardImage d-block" style="transform: rotate(${(Math.floor(Math.random() *21) - 10)}deg);">
                 </div>
-                
                 `
-                
                 )
-    })
-
-    indexCardImage.innerHTML= tempArray.join(" ");
+            })  
+            indexCardImage.innerHTML = tempArray.join(" ");  
 }
+
 function animation(card) {
     card.classList.add("cardDrop")
 }
