@@ -18,7 +18,7 @@ h1 {
 }
 
 .indexCardImage {
-    height: 20rem;
+    height: 16rem;
     width: auto;
     margin-left: 4rem;
 }
@@ -44,8 +44,11 @@ h1 {
 .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
 }
-.cardDrop {
-    animation: cardDrop 5s 
+.beforeDrop {
+}
+.cardDroping {
+    animation: cardDrop 5s;
+    display:block; 
     /* timing-function delay iteration-count direction fill-mode;  */
 }
 @keyframes cardDrop {
@@ -69,4 +72,7 @@ h1 {
         opacity: 100%;  
     }
     
+}
+.priceGraphContainer{
+    margin-top: 20rem;
 }
