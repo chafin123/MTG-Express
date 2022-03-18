@@ -30,12 +30,17 @@ function getCardByApi(set,collecterNumber) {
                 </div>
                 `
                 )
-            tempTagArray.push(`
-                <button href="#" class="badge rounded-pill cmc">${key[6]}</button>
-      
-            `
-            )
+
                 cardImage.innerHTML = tempImgArray.join(" ");
+                let cmcArray = Array.from(key[1].replace(/{/g,'').replace(/}/g,''));
+                console.log(cmcArray)
+                tempTagArray.push(`
+                <button href="#" class="badge rounded-pill cmc">${key[6]}</button>
+                ${cmcArray.forEach((tag) => {
+                    return `<button class="badge rounded-pill manaCost">${tag}</button>`
+                })}
+                `
+            )
                 tagContainer.innerHTML = tempTagArray.join(" ")
             })
             .finally(function () {
