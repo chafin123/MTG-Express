@@ -2,25 +2,19 @@ h1 {
     text-align: center;
     margin-bottom: 3rem;
 }
-.myCarousel {
-    position: relative;
-    margin: auto;
-}
+
 .myCarouselImage {
     position: absolute;
 }
-.current {
-    z-index: 1;
-}
-.carouselContainer{
+
+.myCarouselContainer{
     width: fit-content;
-    margin: auto;
 }
 
 .indexCardImage {
     height: 16rem;
-    width: auto;
-    margin-left: 4rem;
+    width: fit-content;
+    margin-left: 6rem;
 }
 .prev, .next {
     cursor: pointer;

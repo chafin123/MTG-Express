@@ -15,7 +15,7 @@ class Card {
     }
 }
 function getCardByApi(set = [],collecterNumber = []) {
-    let tempArray = [];
+    let tempImgArray = [];
     for(let i = 0;i < set.length; i++){
         fetch(`https://api.scryfall.com/cards/${set[i]}/${collecterNumber[i]}`)
         .then(response => response.json())
@@ -25,18 +25,19 @@ function getCardByApi(set = [],collecterNumber = []) {
             window[cardName] = new Card(cardName,cardData.mana_cost,cardData.image_uris.normal,cardData.typeLine,cardData.set,cardData.keywords,cardData.artist)
             let key = Object.values(window[cardName])
             cardArray.push(cardName.toLowerCase())
-            tempArray.push( `
+            tempImgArray.push( `
                 <div class="myCarouselImage beforeDrop" id="${key[0].toLowerCase()}">
+                <a href="./cardpage.html">
                 <img src="${key[2]}" class="indexCardImage"
                 style="transform:rotate(${(Math.floor(Math.random() *21) - 10)}deg);">
+                </a>
                 </div>
                 `
                 )
-                indexCardImage.innerHTML = tempArray.join(" ");
+                indexCardImage.innerHTML = tempImgArray.join(" ");
             })
            .finally(function() {
                 encompassingSlide();
-                // callPriceGraph()
            })
  
         }
@@ -88,7 +89,7 @@ function priceGraph(priceArray) {
             data: {
                 labels: ['10/21', '11/21', '12/21', '01/22', '02/22', '03/22'],
                 datasets: [{
-                    label: 'price of card',
+                    label: 'Card Price',
                     data: priceArray,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -110,6 +111,7 @@ function priceGraph(priceArray) {
                 }]
             },
             options: {
+                responsive: true,
                 tooltips: {
                     callbacks: {
                         label: function(tooltipItems) {
@@ -134,4 +136,3 @@ function priceGraph(priceArray) {
 function animation(card) {
     card.classList.add("cardDrop")
 }
-// priceGraph(muldrathaPrices);
