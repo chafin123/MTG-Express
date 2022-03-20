@@ -6,3 +6,21 @@ h1 {
     height: 16rem;
     width: fit-content;
 }
+.manaCost {
+    background: gray;
+}
+#W {
+    background: white;
+}
+#U {
+    background: blue;
+}
+#B {
+    background: black;
+}
+#G {
+    background: green;
+}
+#R {
+    background: red;
+}

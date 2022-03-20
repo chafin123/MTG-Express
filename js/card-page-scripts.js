@@ -21,9 +21,8 @@ function getCardByApi(set,collecterNumber) {
         .then((data) => {
             let cardData = data;
             let cardName = cardData.name.replace(/,/g,'').replace(/ /g,'').replace(/'/g,'');
-            window[cardName] = new Card(cardName,cardData.mana_cost,cardData.image_uris.normal,cardData.typeLine,cardData.set,cardData.keywords,cardData.artist,cardData.cmc)
+            window[cardName] = new Card(cardName,cardData.mana_cost,cardData.image_uris.normal,cardData.type_line,cardData.set,cardData.keywords,cardData.artist,cardData.cmc)
             let key = Object.values(window[cardName])
-            console.log(key[1])
             tempImgArray.push( `
                 <div class="myImage" id="${key[0].toLowerCase()}">
                 <img src="${key[2]}" class="indexCardImage">
@@ -33,12 +32,17 @@ function getCardByApi(set,collecterNumber) {
 
                 cardImage.innerHTML = tempImgArray.join(" ");
                 let cmcArray = Array.from(key[1].replace(/{/g,'').replace(/}/g,''));
-                console.log(cmcArray)
+                let typelineArray = Array.from(key[3])
+                console.log(typelineArray)
                 tempTagArray.push(`
-                <button href="#" class="badge rounded-pill cmc">${key[6]}</button>
-                ${cmcArray.forEach((tag) => {
-                    return `<button class="badge rounded-pill manaCost">${tag}</button>`
-                })}
+                <button href="#" class="btn badge rounded-pill bg-secondary cmc">${key[6]}</button>
+                ${cmcArray.map((tag) => {
+                    return `
+                    <button class="btn badge rounded-pill manaCost" id="${tag}">
+                    ${tag}
+                    </button>`
+                }).join(" ")}
+                <button class="btn badge rounded-pill type">${key[3]}</button>
                 `
             )
                 tagContainer.innerHTML = tempTagArray.join(" ")
@@ -58,7 +62,6 @@ function getCardByApi(set,collecterNumber) {
         cardPricesName = ['muldrothathegravetide','brainfreeze','mindsdesire','boseijuwhoendures','timespiral']
         cardPrices = [muldrothathegravetide,brainfreeze,mindsdesire,boseijuwhoendures,timespiral];
         let elm = document.querySelector('.myImage');
-        console.log(elm)
         let priceArrayName = elm.id;
         let priceArrayIndex = cardPricesName.indexOf(priceArrayName)
         priceGraph(cardPrices[priceArrayIndex])
